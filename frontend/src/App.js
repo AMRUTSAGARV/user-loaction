@@ -30,7 +30,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <nav className="navbar navbar-expand navbar-dark bg-secondary">
+        <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/"} className="navbar-brand">
             POHU.
           </Link>
