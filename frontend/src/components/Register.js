@@ -46,6 +46,7 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [location, setLocation] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
   const onChangeUsername = (e) => {
@@ -60,13 +61,17 @@ const Register = () => {
     const password = e.target.value;
     setPassword(password);
   };
+  const onChangeLocation = (e) => {
+    const location = e.target.value;
+    setLocation(location);
+  };
   const handleRegister = (e) => {
     e.preventDefault();
     setMessage("");
     setSuccessful(false);
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, password).then(
+      AuthService.register(username, email, password, location).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -126,6 +131,17 @@ const Register = () => {
                   value={password}
                   onChange={onChangePassword}
                   validations={[required, vpassword]}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="location">Location</label>
+                <Input
+                  type="location"
+                  className="form-control"
+                  name="location"
+                  value={location}
+                  onChange={onChangeLocation}
+                  // validations={[required, vpassword]}
                 />
               </div>
               <div className="form-group">

@@ -3,27 +3,21 @@ import AuthService from "../services/auth.service";
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
   return (
-    <div className="container">
-      <header className="jumbotron">
-        <h3>
-          <strong>{currentUser.username}'s</strong> Profile
-        </h3>
-      </header>
-      <p>
-        <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{" "}
-        {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
-      </p>
-      <p>
-        <strong>Id:</strong> {currentUser.id}
-      </p>
-      <p>
-        <strong>Email:</strong> {currentUser.email}
-      </p>
-      <strong>Authorities:</strong>
-      <ul>
-        {currentUser.roles &&
-          currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-      </ul>
+    <div>
+      <div className="card">
+        <h5 className="card-header">{currentUser.username}'s Dashboard</h5>
+        <div className="card-body">
+          <h5 className="card-title">{currentUser.email}</h5>
+          <p className="card-text">{currentUser.location}</p>
+          {currentUser.roles &&
+            currentUser.roles.map((role, index) => (
+              <div key={index}>{role}</div>
+            ))}
+          <button href="#" className="btn btn-primary">
+            Dont have a branch? Click here to create your branch
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
