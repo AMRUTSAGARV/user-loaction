@@ -1,13 +1,33 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useParams, useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
-const Profile = () => {
+import branchService from "../services/branch";
+const Profile = ({ isBranch, setIsBranch, isAddBranch, setisAddBranch }) => {
+  const navigate = useNavigate();
+  const [branches, setBranches] = useState([]);
+  const [state, setState] = useState({ branchName: "" });
+
+  const { id } = useParams();
+
   const currentUser = AuthService.getCurrentUser();
   const [show, setShow] = useState(false);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("working.");
+    //setisAddBranch(true)
+    branchService.createBranch({ branchName: state.branchName }).then((res) => {
+      console.log(res.data);
+      setisAddBranch(false);
+
+      //window.location.reload()
+    });
+  };
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   return (
     <div>
       <div className="card">

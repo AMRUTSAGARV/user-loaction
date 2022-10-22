@@ -2,7 +2,7 @@ const Branch = require("../models/branch.model");
 
 const BranchControl = {
   createBranch: (req, res) => {
-    if (!req.body.branch) {
+    if (!req.body.branchName) {
       res.status(404).send({ message: "Content cannot be empty." });
       return;
     }
