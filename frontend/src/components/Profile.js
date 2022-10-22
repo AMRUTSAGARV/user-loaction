@@ -35,7 +35,7 @@ const Profile = () => {
                 className="custom-select mr-sm-2"
                 id="inlineFormCustomSelect"
               >
-                <option selected>Branches</option>
+                <option selected>Branch 0</option>
                 <option value="1">Branch 1</option>
                 <option value="2">Branch 2</option>
                 <option value="3">Branch 3</option>
